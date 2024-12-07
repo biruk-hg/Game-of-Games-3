@@ -1,7 +1,7 @@
-# **Simple Java Games**
+# **Game of Games**
 
 ## **Overview**
-Welcome to **Simple Java Games**! This project offers a selection of fun, interactive games designed to enhance your Java programming skills. You can play these games directly from the console, with each offering a unique challenge. The games included in this collection are:
+Welcome to **Game of Games**! This project offers a selection of fun, interactive games designed to enhance your Java programming skills. You can play these games directly from the console, with each offering a unique challenge. The games included in this collection are:
 
 1. **Find the Thimble**: Guess where the thimble is hidden among the cups.  
 2. **Coin Flip**: Try to predict the outcome of a coin flip.   
@@ -9,7 +9,7 @@ Welcome to **Simple Java Games**! This project offers a selection of fun, intera
 4. **Even or Odd**: Predict whether a randomly generated number will be even or odd.  
 5. **Find the Red Thread**: Spot the "red thread" hidden within a sequence of shuffled strings.
 
-You can choose any of these games to play from the **Simple Java Games** menu.
+You can choose any of these games to play from the **Game of Games** menu.
 
 ## **Game Descriptions**
 
@@ -61,10 +61,10 @@ You can choose any of these games to play from the **Simple Java Games** menu.
 ### **Main Classes**
 - `GameOfGames.java`: The main entry point of the project. It displays the game selection menu and directs the player to the selected game.  
 - `CoinFlipGame.java`: Implements the Coin Flip game mechanics.  
-- `FindTheThimbleGame.java`: Implements the Find the Thimble game.  
-- `GuessTheNumberGame.java`: Implements the Guess the Number game.  
-- `EvenOrOddGame.java`: Implements the Even or Odd game.  
-- `RedThreadGame.java`: Implements the Find the Red Thread game.
+- `FindTheThimble.java`: Implements the Find the Thimble game.  
+- `GuessTheNumber.java`: Implements the Guess the Number game.  
+- `EvenOrOdd.java`: Implements the Even or Odd game.  
+- `RedThread.java`: Implements the Find the Red Thread game.
 
 ### **Test Classes**
 - `CoinFlipTest.java`: Unit tests for the Coin Flip game.  
@@ -77,7 +77,7 @@ You can choose any of these games to play from the **Simple Java Games** menu.
 
 ## **Setup and Installation**
 
-1. Clone this repository to your local machine: git clone <repository_url>
+1. Clone this repository to your local machine: git clone <https://github.com/biruk-hg/Game-of-Games-3.git>
 2. Open the project in your favorite Java IDE or navigate to the project folder via the terminal.
-3. Compile the Java files: javac SimpleJavaGames.java
-4. Run the program: java SimpleJavaGames
+3. Compile the Java files: javac GameOfGames.java
+4. Run the program: java GameOfGames
