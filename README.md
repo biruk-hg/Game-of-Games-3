@@ -39,7 +39,7 @@ You can choose any of these games to play from the **Game of Games** menu.
   - The player guesses if the number will be even or odd.  
   - The player wins the round if the guess matches the result.
 
-### **5. Find the Red Thread**
+### **5. Red Thread**
 - **Objective:** Identify the hidden "red thread" in a scrambled list of strings.  
 - **Gameplay:**  
   - A set of strings is presented to the player.  
