@@ -1,4 +1,4 @@
-// package gameofgames;
+package gameofgames;
 import java.util.Scanner;
 
 public class GameOfGames{
@@ -26,14 +26,14 @@ public class GameOfGames{
     }
 
     /* display main menu + start game and select game options */
-    void game_select() {
+    void gameSelect() {
         int selected_game;
         System.out.println("Please enter a game to select and play: \n1-" + GAME_1 + "\n2-" + GAME_2 + "\n3-" + GAME_3 + "\n4-" + GAME_4 + "\n5-" + GAME_5 + "\n\nChoose from 1-5: ");
         selected_game = sc.nextInt();
         if (selected_game == 0) {
             DEBUG = true;
             System.out.println("Debug mode enabled\n");
-            game_select();
+            gameSelect();
         }
         else if (selected_game == 1 || selected_game == 2 || selected_game == 3 || selected_game == 4 || selected_game == 5 ){
             // System.out.println("\nYou have chosen Game " + selected_game + "\n");
@@ -41,12 +41,12 @@ public class GameOfGames{
         }
         else {
             System.out.println("Invalid input detected. Please try again\n");
-            game_select();
+            gameSelect();
         }
     }
 
     /* allow players to quit game if desired */
-    Boolean game_quit() {
+    Boolean gameQuit() {
         String input;
         System.out.println("Quit game? y/n\n");
         input = sc.nextLine();
@@ -65,12 +65,12 @@ public class GameOfGames{
     }
 
     /* compare player scores to find the winner */
-    void get_winner() {
-        if (P1.get_score() > P2.get_score()) {
-            System.out.println(P1.get_name() + " wins!\n");
+    void getWinner() {
+        if (P1.getScore() > P2.getScore()) {
+            System.out.println(P1.getName() + " wins!\n");
         }
-        else if (P2.get_score() < P1.get_score()) {
-            System.out.println(P2.get_name() + " wins!\n");
+        else if (P2.getScore() < P1.getScore()) {
+            System.out.println(P2.getName() + " wins!\n");
         }
         else {
             System.out.println("It looks like this Game of Games ended in a tie!\n");
@@ -81,8 +81,8 @@ public class GameOfGames{
     void show_scoreboard() {
         System.out.println("******** SCOREBOARD ********\n");
         System.out.println("*****PLAYER*******SCORE*****\n");
-        System.out.printf("   %s\t %d\n", P1.get_name(), P1.get_score());
-        System.out.printf("   %s\t %d\n\n", P2.get_name(), P2.get_score());
+        System.out.printf("   %s\t %d\n", P1.getName(), P1.getScore());
+        System.out.printf("   %s\t %d\n\n", P2.getName(), P2.getScore());
     
     }
 }

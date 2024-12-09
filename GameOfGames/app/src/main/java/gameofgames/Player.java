@@ -1,4 +1,4 @@
-// package gameofgames;
+package gameofgames;
 import java.util.Scanner;
 /* POTENTIALLY implement a special player that can execute commands at any time from the input line */
 public class Player {
@@ -12,12 +12,12 @@ public class Player {
     private static int player_count = 1;
 
     public Player() {
-        set_name();
+        getName();
         player_count++;
     }
 
     /* set player username, set to P# if no input */
-    void set_name() {
+    void setName() {
         String input;
         System.out.println("\nWelcome Player " + player_count + ". What is your name?");
         input = sc.nextLine();
@@ -29,15 +29,15 @@ public class Player {
         }
     }
     /* retrieve player name */
-    String get_name() {
+    String getName() {
         return player_name;
     }
     /* upon winning, increase the players score */
-    void increase_score() {
+    void increaseScore() {
         player_score++;
     }
     /* retrieve payer score */
-    int get_score() {
+    int getScore() {
         return player_score;
     }
     /*  */
