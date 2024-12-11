@@ -1,6 +1,5 @@
 package gameofgames;
 
-// Even or Odd Game
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,6 +8,7 @@ public class EvenOrOdd {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
+        // Step S01: Player chooses Even or Odd
         System.out.println("Choose 'Even' or 'Odd':");
         String playerChoice = scanner.next().toLowerCase();
         while (!playerChoice.equals("even") && !playerChoice.equals("odd")) {
@@ -16,6 +16,7 @@ public class EvenOrOdd {
             playerChoice = scanner.next().toLowerCase();
         }
 
+        // Step S02: Specify Best Out Of value
         System.out.println("Specify 'Best Out Of' value (must be an odd number):");
         int bestOutOf = scanner.nextInt();
         while (bestOutOf % 2 == 0 || bestOutOf <= 0) {
@@ -23,11 +24,13 @@ public class EvenOrOdd {
             bestOutOf = scanner.nextInt();
         }
 
+        // Step S03: Begin the game rounds
         int playerScore = 0;
         int computerScore = 0;
-        int rounds = (bestOutOf / 2) + 1;
+        int roundsToWin = (bestOutOf / 2) + 1;
 
-        while (playerScore < rounds && computerScore < rounds) {
+        while (playerScore < roundsToWin && computerScore < roundsToWin) {
+            // Step S04: Input throws for player
             System.out.println("Enter a number (1-5):");
             int playerNumber = scanner.nextInt();
             while (playerNumber < 1 || playerNumber > 5) {
@@ -35,9 +38,11 @@ public class EvenOrOdd {
                 playerNumber = scanner.nextInt();
             }
 
+            // Computer randomly selects a number
             int computerNumber = random.nextInt(5) + 1;
             System.out.println("Computer chose: " + computerNumber);
 
+            // Step S05: Compare throw results
             int sum = playerNumber + computerNumber;
             boolean isEven = sum % 2 == 0;
 
@@ -52,10 +57,11 @@ public class EvenOrOdd {
             System.out.println("Current Scores - You: " + playerScore + " Computer: " + computerScore);
         }
 
-        if (playerScore > computerScore) {
+        // Step S06: Check Win Condition
+        if (playerScore >= roundsToWin) {
             System.out.println("Congratulations! You won the game.");
         } else {
-            System.out.println("You lost the game. Better luck next time!");
+            System.out.println("The computer won the game! Better luck next time.");
         }
     }
 }
