@@ -28,7 +28,10 @@ public class GameController {
 
     /* check desired user mode */
     void checkMode() {
-        System.out.println("Preparing the Game Of Games...");
+        String input = "";
+        System.out.println("Press Enter to Start!");
+        input = sc.nextLine();
+        System.out.println("Preparing the Game of Games...\n");
         /* 3 second timer to wait for debug mode input */
         for (int i = 3; i > 0; i--) {
             System.out.println(i); // Display the countdown
@@ -38,13 +41,12 @@ public class GameController {
                 e.printStackTrace();
             }
         }
-        String input = sc.hasNextLine() ? sc.nextLine() : "";
-
         // if Enter is pressed, enable the debug mode
-        if (input.isEmpty()) {
+        if (input.equals("d")) {
             System.out.println("Entering Debug Mode...");
             DEBUG = true; // Call a method that contains the debug logic
         }
+        System.out.println();
     }
 
     /* compare player scores to find the winner */
@@ -138,7 +140,7 @@ public class GameController {
         /* quickly check prompt testers for debug capabilities */
         game.checkMode();
 
-        System.out.println("Welcome to the Game of Games!");
+        System.out.println("Welcome to the Game of Games!\n");
 
         if (DEBUG == false) {
             /* potentially skip the player initialization stage if in debug mode */
