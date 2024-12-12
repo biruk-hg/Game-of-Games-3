@@ -10,11 +10,11 @@ public class CoinFlip {
         int rounds = scanner.nextInt();
 
         // Get valid number of rounds
-        while (numOfRounds % 2 == 0 || numOfRounds <= 0) {
+        while (rounds % 2 == 0 || rounds <= 0) {
             System.out.print("Enter an odd number for the best out of value: ");
-            numOfRounds = input.nextInt();
+            rounds = input.nextInt();
 
-            if (numOfRounds % 2 == 0 || numOfRounds <= 0) 
+            if (rounds % 2 == 0 || rounds <= 0) 
                 System.out.println("Invalid input. Please enter a positive odd number.");
             else 
                 System.out.println("Valid Number Enter.");
