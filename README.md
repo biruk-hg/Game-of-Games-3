@@ -99,5 +99,5 @@ You can select any of these games from the **Game of Games** menu.
 ### **Clone the Repository**
 
 ```bash
-git clone https://github.com/your-username/GameOfGames.git
+git clone https://github.com/biruk-hg/Game-of-Games-3.git
 cd GameOfGames
