@@ -1,77 +1,55 @@
 package gameofgames;
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class FindTheThimble {
-
-    public int numOfRounds = 0;
-    public int p1Score = 0; // Player's score
-    public int computerScore = 0; // Computer's score
-
-    public static void main(String[] args) {
-        FindTheThimble game = new FindTheThimble();
-        game.startGame();
-    }
-
-    public void startGame() {
-        Scanner input = new Scanner(System.in);
-        Random random = new Random();
+    public void startGame(Players player) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to Find The Thimble, " + player.getName() + "!");
+        System.out.print("Enter the number of rounds to play (odd number): ");
+        int rounds = scanner.nextInt();
 
         // Get valid number of rounds
-        while (numOfRounds % 2 == 0 || numOfRounds <= 0) {
+        while (rounds % 2 == 0 || rounds <= 0) {
             System.out.print("Enter an odd number for the best out of value: ");
-            numOfRounds = input.nextInt();
+            rounds = input.nextInt();
 
-            if (numOfRounds % 2 == 0 || numOfRounds <= 0) 
+            if (rounds % 2 == 0 || rounds <= 0) 
                 System.out.println("Invalid input. Please enter a positive odd number.");
             else 
                 System.out.println("Valid Number Enter.");
         }
 
-        System.out.println("Let's play best out of " + numOfRounds + " rounds!");
+        System.out.println("Let's play best out of " + rounds + " rounds!");
 
-        int roundsPlayed = 0;
+        int playerWins = 0, computerWins = 0;
+        String[] outcomes = {"Right", "Left"};
 
-        // Main game loop
-        while (roundsPlayed < numOfRounds) {
-            // Computer randomly decides where to hide the thimble
-            String computerChoice = random.nextBoolean() ? "r" : "l";
-            System.out.println("The computer hid the thimble. Player, guess where the thimble is hidden.");
+        for (int i = 1; i <= rounds; i++) {
+            System.out.println("Round " + i + ": Right or Left?");
+            String playerGuess = scanner.next();
 
-            System.out.print("Enter 'l' for right rand or 'l' for left hand: ");
-            String playerGuess = input.next().toLowerCase();
+            String thimbleResult = outcomes[(int) (Math.random() * 2)];
+            System.out.println("Thimble hidden in: " + thimbleResult);
 
-            while (!playerGuess.equals("r") && !playerGuess.equals("l")) {
-                System.out.println("Invalid input. Please enter 'r' for right rand or 'l' for left hand: ");
-                playerGuess = input.next().toLowerCase();
-            }
-
-            // Check the result
-            if (playerGuess.equals(computerChoice)) {
-                System.out.println("You guessed correctly!");
-                p1Score++;
+            if (playerGuess.equalsIgnoreCase(thimbleResult)) {
+                System.out.println("You won this round!");
+                playerWins++;
             } else {
-                System.out.println("You guessed incorrectly.");
-                computerScore++;
+                System.out.println("Computer won this round!");
+                computerWins++;
             }
 
-            roundsPlayed++;
-            System.out.println("Score: Player - " + p1Score + " | Computer - " + computerScore);
-            System.out.println();
+            if (playerWins > rounds / 2 || computerWins > rounds / 2) {
+                break;
+            }
         }
 
-        // Determine the winner
-        System.out.println(determineWinner());
-        input.close();
-    }
-
-    public String determineWinner() {
-        if (p1Score > computerScore) 
-            return "Congratulations! You won the game!";
-        else if (computerScore > p1Score) 
-            return "The computer won the game! Better luck next time.";
-        else 
-            return "It's a tie!";
+        if (playerWins > computerWins) {
+            System.out.println("Congratulations, " + player.getName() + "! You won the game.");
+            player.incrementScore();
+        } else {
+            System.out.println("Computer wins! Better luck next time.");
+        }
     }
 }
