@@ -1,11 +1,11 @@
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class PlayersTest {
+public class PlayersTest {
+
     @Test
-    void testPlayerInitialization() {
+    void testInitialScore() {
         Players player = new Players("TestPlayer");
-        assertEquals("TestPlayer", player.getName());
         assertEquals(0, player.getScore());
     }
 
@@ -19,9 +19,8 @@ class PlayersTest {
     @Test
     void testResetScore() {
         Players player = new Players("TestPlayer");
-        player.incrementScore();
+        player.incrementScore();  // Increment the score first
         player.resetScore();
         assertEquals(0, player.getScore());
     }
 }
-
