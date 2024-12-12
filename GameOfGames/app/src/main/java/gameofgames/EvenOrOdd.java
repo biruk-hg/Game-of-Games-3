@@ -4,30 +4,30 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class EvenOrOdd {
-    public void playGame() {
+    public void startGame(Players player) {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
         // Step S01: Player chooses Even or Odd
-        System.out.println("Choose 'Even' or 'Odd':");
+        System.out.print("Choose 'Even' or 'Odd': ");
         String playerChoice = scanner.next().toLowerCase();
-        while (!playerChoice.equals("even") && !playerChoice.equals("odd")) {
+        while (!playerChoice.equals("even") || !playerChoice.equals("odd")) {
             System.out.println("Invalid choice. Enter 'Even' or 'Odd':");
             playerChoice = scanner.next().toLowerCase();
         }
 
         // Step S02: Specify Best Out Of value
         System.out.println("Specify 'Best Out Of' value (must be an odd number):");
-        int bestOutOf = scanner.nextInt();
-        while (bestOutOf % 2 == 0 || bestOutOf <= 0) {
+        int rounds = scanner.nextInt();
+        while (rounds % 2 == 0 || rounds <= 0) {
             System.out.println("Invalid value. Enter an odd number greater than 0:");
-            bestOutOf = scanner.nextInt();
+            rounds = scanner.nextInt();
         }
 
         // Step S03: Begin the game rounds
         int playerScore = 0;
         int computerScore = 0;
-        int roundsToWin = (bestOutOf / 2) + 1;
+        int roundsToWin = (rounds / 2) + 1;
 
         while (playerScore < roundsToWin && computerScore < roundsToWin) {
             // Step S04: Input throws for player
@@ -59,7 +59,8 @@ public class EvenOrOdd {
 
         // Step S06: Check Win Condition
         if (playerScore >= roundsToWin) {
-            System.out.println("Congratulations! You won the game.");
+            System.out.println("Great job, " + player.getName() + "! Your score has been updated.");
+            player.incrementScore();
         } else {
             System.out.println("The computer won the game! Better luck next time.");
         }
