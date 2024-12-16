@@ -22,21 +22,22 @@ You can select any of these games from the **Game of Games** menu.
 - **Gameplay**:  
   - Choose a positive odd number of rounds to play.  
   - Make your guess ("Heads" or "Tails").  
-  - Win by correctly guessing the outcome of the coin flip more times than the computer.
+  - Win by correctly guessing the outcome of the coin flip.
 
 ### **2. Find the Thimble**
 - **Objective**: Guess which hand (left or right) contains the hidden thimble.
 - **Gameplay**:  
   - Choose a positive odd number of rounds to play.  
   - Guess the hand where the thimble is hidden.  
-  - Win by making more correct guesses than the computer.
+  - Win by making more correct guesses of where the thimble is hidden.
 
 ### **3. Even or Odd**
-- **Objective**: Predict if a randomly generated number is even or odd.
+- **Objective**: Predict if the sum of two numbers will be even or odd.
 - **Gameplay**:  
-  - Choose a positive odd number of rounds to play.  
-  - Guess if the number will be even or odd.  
-  - Win by making more correct guesses than the computer.
+  - Choose a positive odd number of rounds to play.
+  - Decide if you want to be even or odd.
+  - Select a number (while computer does the same).  
+  - Win if the sum of your number and the computer's number is the parity you chose.
 
 ### **4. Guess the Number**
 - **Objective**: Guess the number the computer randomly selects (between 1 and 10).
@@ -46,7 +47,7 @@ You can select any of these games from the **Game of Games** menu.
   - Win by correctly guessing more times than the computer.
 
 ### **5. Red Thread**
-- **Objective**: Identify the position of the hidden red thread (positions 1 to 3).
+- **Objective**: Identify the position of the hidden red thread.
 - **Gameplay**:  
   - Choose a positive odd number of rounds to play.  
   - Guess the position of the red thread.  
@@ -75,16 +76,19 @@ You can select any of these games from the **Game of Games** menu.
 | `GuessTheNumber.java`| Implements the Guess the Number game.                  |
 | `RedThread.java`     | Implements the Red Thread game.                        |
 | `Players.java`       | Represents the player and tracks the score.            |
+| `GameController.java` | Implements all the Games.                             |
 
 ### **Test Classes**
 
 | **Class**                 | **Description**                                        |
 |----------------------------|--------------------------------------------------------|
+| `PlayersTest.java`        | Unit tests for the Players class.                      |
 | `CoinFlipTest.java`       | Unit tests for the Coin Flip game.                     |
 | `FindTheThimbleTest.java` | Unit tests for the Find the Thimble game.              |
 | `EvenOrOddTest.java`      | Unit tests for the Even or Odd game.                   |
 | `GuessTheNumberTest.java` | Unit tests for the Guess the Number game.              |
 | `RedThreadTest.java`      | Unit tests for the Red Thread game.                    |
+| `GameControllerTest.java` | Unit tests for the Game Controller.                    |
 
 ---
 
@@ -100,4 +104,6 @@ You can select any of these games from the **Game of Games** menu.
 
 ```bash
 git clone https://github.com/biruk-hg/Game-of-Games-3.git
-cd GameOfGames
+cd location_of_GameOfGames_folder/GameOfGames/app/src/main (for the main classes)
+cd location_of_GameOfGames_folder/GameOfGames/app/src/test (for the test classes)
+
