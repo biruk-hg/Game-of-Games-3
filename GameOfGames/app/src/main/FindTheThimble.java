@@ -5,25 +5,22 @@ public class FindTheThimble {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Find the Thimble, " + player.getName() + "!");
 
-        System.out.print("Enter the number of rounds to play (odd number): ");
-        int rounds = scanner.nextInt();
-
-        while (rounds % 2 == 0 || rounds <= 0) {
-            System.out.print("Enter a positive odd number for rounds: ");
-            rounds = scanner.nextInt();
-        }
-
+        int rounds = getBestOutOf(scanner);
         int playerWins = 0, computerWins = 0;
 
-        for (int i = 1; i <= rounds; i++) {
-            System.out.println();
-            System.out.println("Round " + i + ": Guess which hand (left or right) has the thimble?");
-            String playerGuess = scanner.next();
+        while (playerWins < rounds / 2 + 1 && computerWins < rounds / 2 + 1) {
+            System.out.println("Guess which hand the thimble is in (left/right):");
+            String playerGuess = scanner.next().toLowerCase();
+
+            while (!playerGuess.equals("left") && !playerGuess.equals("right")) {
+                System.out.println("Invalid input. Please enter 'left' or 'right':");
+                playerGuess = scanner.next().toLowerCase();
+            }
 
             String thimbleLocation = Math.random() < 0.5 ? "left" : "right";
             System.out.println("Thimble was in the " + thimbleLocation + " hand.");
 
-            if (playerGuess.equalsIgnoreCase(thimbleLocation)) {
+            if (playerGuess.equals(thimbleLocation)) {
                 System.out.println("You guessed correctly!");
                 playerWins++;
             } else {
@@ -31,18 +28,26 @@ public class FindTheThimble {
                 computerWins++;
             }
 
-            if (playerWins > rounds / 2 || computerWins > rounds / 2) {
-                break;
-            }
+            System.out.println("Score: You - " + playerWins + " | Computer - " + computerWins);
         }
 
         if (playerWins > computerWins) {
             System.out.println("Congratulations, " + player.getName() + "! You won the game.");
-            System.out.println();
             player.incrementScore();
         } else {
             System.out.println("Computer wins! Better luck next time.");
-            System.out.println();
         }
+    }
+
+    private int getBestOutOf(Scanner scanner) {
+        System.out.print("Enter an odd number for the Best out of value: ");
+        int rounds = scanner.nextInt();
+
+        while (rounds % 2 == 0 || rounds <= 0) {
+            System.out.print("Invalid input. Please enter a positive odd number: ");
+            rounds = scanner.nextInt();
+        }
+
+        return rounds;
     }
 }
