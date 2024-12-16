@@ -1,12 +1,17 @@
 import java.util.Scanner;
 
 public class FindTheThimble {
+    private int computerWins = 0;
+
+    public int getComputerWins() {
+        return computerWins;
+    }
     public void startGame(Players player) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Find the Thimble, " + player.getName() + "!");
 
         int rounds = getBestOutOf(scanner);
-        int playerWins = 0, computerWins = 0;
+        int playerWins = 0;
 
         while (playerWins < rounds / 2 + 1 && computerWins < rounds / 2 + 1) {
             System.out.println("Guess which hand the thimble is in (left/right):");
