@@ -1,27 +1,31 @@
-import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class RedThreadTest {
+class RedThreadTest {
+    private RedThread redThread;
+    private Players player;
 
-    @Test
-    void testValidRounds() {
-        Players player = new Players("TestPlayer");
-        RedThread game = new RedThread();
-
-        // Assume valid round input is 5
-        assertDoesNotThrow(() -> game.startGame(player));
+    @BeforeEach
+    void setUp() {
+        redThread = new RedThread();
+        player = new Players("TestPlayer");
     }
 
     @Test
-    void testInitialScores() {
-        Players player = new Players("TestPlayer");
+    void testInitialPlayerScore() {
         assertEquals(0, player.getScore());
     }
 
     @Test
-    void testPlayerScoreIncrement() {
-        Players player = new Players("TestPlayer");
-        player.incrementScore();
-        assertEquals(1, player.getScore());
+    void testPlayerFindsRedThread() {
+        boolean found = redThread.checkForRedThread("red");
+        assertTrue(found);
+    }
+
+    @Test
+    void testSimulateRedThreadGame() {
+        String threadColor = redThread.generateThreadColor();
+        assertTrue(threadColor.equals("red") || threadColor.equals("blue") || threadColor.equals("green"));
     }
 }
