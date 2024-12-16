@@ -64,7 +64,7 @@ public class RedThread {
 
             if (computerChoices.contains(redThreadPosition)) {
                 System.out.println("The computer found the red thread. You lose!");
-                computerScore++;
+                computerWins++;
                 gameOver = true;
             } else {
                 System.out.println("Red thread was not among the computer's choices.");
@@ -73,6 +73,6 @@ public class RedThread {
 
         System.out.println("\nScoreboard:");
         System.out.println(player.getName() + "'s Score: " + player.getScore());
-        System.out.println("Computer's Score: " + computerScore);
+        System.out.println("Computer's Score: " + computerWins);
     }
 }
