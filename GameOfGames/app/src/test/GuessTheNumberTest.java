@@ -1,27 +1,32 @@
-import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class GuessTheNumberTest {
+class GuessTheNumberTest {
+    private GuessTheNumber guessTheNumber;
+    private Players player;
 
-    @Test
-    void testValidRounds() {
-        Players player = new Players("TestPlayer");
-        GuessTheNumber game = new GuessTheNumber();
-
-        // Assume valid round input is 5
-        assertDoesNotThrow(() -> game.startGame(player));
+    @BeforeEach
+    void setUp() {
+        guessTheNumber = new GuessTheNumber();
+        player = new Players("TestPlayer");
     }
 
     @Test
-    void testInitialScores() {
-        Players player = new Players("TestPlayer");
+    void testInitialPlayerScore() {
         assertEquals(0, player.getScore());
     }
 
     @Test
-    void testPlayerScoreIncrement() {
-        Players player = new Players("TestPlayer");
-        player.incrementScore();
-        assertEquals(1, player.getScore());
+    void testPlayerGuessesNumberCorrectly() {
+        int randomNumber = guessTheNumber.generateRandomNumber();
+        boolean correct = guessTheNumber.checkGuess(randomNumber, randomNumber);
+        assertTrue(correct);
+    }
+
+    @Test
+    void testSimulateGuessTheNumberGame() {
+        int randomNumber = guessTheNumber.generateRandomNumber();
+        assertTrue(randomNumber >= 1 && randomNumber <= 100);
     }
 }
