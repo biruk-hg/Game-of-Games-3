@@ -1,27 +1,37 @@
-import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class CoinFlipTest {
+class CoinFlipTest {
+    private CoinFlip coinFlip;
+    private Players player;
 
-    @Test
-    void testValidRounds() {
-        Players player = new Players("TestPlayer");
-        CoinFlip game = new CoinFlip();
-
-        // Assume valid round input is 5
-        assertDoesNotThrow(() -> game.startGame(player));
+    @BeforeEach
+    void setUp() {
+        coinFlip = new CoinFlip();
+        player = new Players("TestPlayer");
     }
 
     @Test
-    void testInitialScores() {
-        Players player = new Players("TestPlayer");
-        assertEquals(0, player.getScore());
+    void testInitialComputerWins() {
+        assertEquals(0, coinFlip.getComputerWins());
     }
 
     @Test
-    void testPlayerScoreIncrement() {
-        Players player = new Players("TestPlayer");
+    void testPlayerWins() {
         player.incrementScore();
         assertEquals(1, player.getScore());
+    }
+
+    @Test
+    void testSimulateCoinFlipGame() {
+        String result = coinFlip.flipCoin("heads");
+        assertTrue(result.equals("heads") || result.equals("tails"));
+    }
+
+    @Test
+    void testComputerWinInCoinFlip() {
+        coinFlip.incrementComputerWins();
+        assertEquals(1, coinFlip.getComputerWins());
     }
 }
