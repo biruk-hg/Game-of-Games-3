@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RedThread {
-    private int computerScore = 0;
+    private int computerWins = 0;
 
-    public int getComputerScore() {
-        return computerScore;
+    public int getComputerWins() {
+        return computerWins;
     }
 
     public void startGame(Players player) {
