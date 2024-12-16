@@ -5,44 +5,57 @@ public class GuessTheNumber {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Guess the Number, " + player.getName() + "!");
 
-        System.out.print("Enter the number of rounds to play (odd number): ");
-        int rounds = scanner.nextInt();
-
-        while (rounds % 2 == 0 || rounds <= 0) {
-            System.out.print("Enter a positive odd number for rounds: ");
-            rounds = scanner.nextInt();
-        }
-
+        int rounds = getBestOutOf(scanner);
         int playerWins = 0, computerWins = 0;
 
-        for (int i = 1; i <= rounds; i++) {
-            System.out.println();
-            System.out.println("Round " + i + ": Guess the number (1-10).");
-            int playerGuess = scanner.nextInt();
-
+        while (playerWins < rounds / 2 + 1 && computerWins < rounds / 2 + 1) {
             int targetNumber = (int) (Math.random() * 10) + 1;
-            System.out.println("The number was: " + targetNumber);
+            System.out.println("Guess the number (between 1 and 10):");
 
-            if (playerGuess == targetNumber) {
-                System.out.println("You guessed correctly!");
-                playerWins++;
-            } else {
-                System.out.println("Computer wins this round!");
+            int attempts = 0;
+            boolean playerGuessed = false;
+
+            while (attempts < 5) {
+                int playerGuess = scanner.nextInt();
+                attempts++;
+
+                if (playerGuess == targetNumber) {
+                    System.out.println("You guessed correctly!");
+                    playerGuessed = true;
+                    playerWins++;
+                    break;
+                } else if (playerGuess < targetNumber) {
+                    System.out.println("Too low! Try again.");
+                } else {
+                    System.out.println("Too high! Try again.");
+                }
+            }
+
+            if (!playerGuessed) {
+                System.out.println("You ran out of attempts. The correct number was: " + targetNumber);
                 computerWins++;
             }
 
-            if (playerWins > rounds / 2 || computerWins > rounds / 2) {
-                break;
-            }
+            System.out.println("Score: You - " + playerWins + " | Computer - " + computerWins);
         }
 
         if (playerWins > computerWins) {
             System.out.println("Congratulations, " + player.getName() + "! You won the game.");
-            System.out.println();
             player.incrementScore();
         } else {
             System.out.println("Computer wins! Better luck next time.");
-            System.out.println();
         }
+    }
+
+    private int getBestOutOf(Scanner scanner) {
+        System.out.print("Enter an odd number for the Best out of value: ");
+        int rounds = scanner.nextInt();
+
+        while (rounds % 2 == 0 || rounds <= 0) {
+            System.out.print("Invalid input. Please enter a positive odd number: ");
+            rounds = scanner.nextInt();
+        }
+
+        return rounds;
     }
 }
