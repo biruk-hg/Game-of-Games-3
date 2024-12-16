@@ -26,27 +26,27 @@ public class GameController {
                 case 1:
                     CoinFlip coinFlipGame = new CoinFlip();
                     coinFlipGame.startGame(player);
-                    computerScore += coinFlipGame.getComputerScore();
+                    computerScore += coinFlipGame.getComputerWins();
                     break;
                 case 2:
                     FindTheThimble findTheThimbleGame = new FindTheThimble();
                     findTheThimbleGame.startGame(player);
-                    computerScore += findTheThimbleGame.getComputerScore();
+                    computerScore += findTheThimbleGame.getComputerWins();
                     break;
                 case 3:
                     EvenOrOdd evenOrOddGame = new EvenOrOdd();
                     evenOrOddGame.startGame(player);
-                    computerScore += evenOrOddGame.getComputerScore();
+                    computerScore += evenOrOddGame.getComputerWins();
                     break;
                 case 4:
                     GuessTheNumber guessTheNumberGame = new GuessTheNumber();
                     guessTheNumberGame.startGame(player);
-                    computerScore += guessTheNumberGame.getComputerScore();
+                    computerScore += guessTheNumberGame.getComputerWins();
                     break;
                 case 5:
                     RedThread redThreadGame = new RedThread();
                     redThreadGame.startGame(player);
-                    computerScore += redThreadGame.getComputerScore();
+                    computerScore += redThreadGame.getComputerWins();
                     break;
                 case 6:
                     System.out.println("Thank you for playing, " + player.getName() + "!");
