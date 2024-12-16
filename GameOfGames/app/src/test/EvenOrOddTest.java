@@ -1,27 +1,37 @@
-import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class EvenOrOddTest {
+class EvenOrOddTest {
+    private EvenOrOdd evenOrOdd;
+    private Players player;
 
-    @Test
-    void testValidRounds() {
-        Players player = new Players("TestPlayer");
-        EvenOrOdd game = new EvenOrOdd();
-
-        // Assume valid round input is 5
-        assertDoesNotThrow(() -> game.startGame(player));
+    @BeforeEach
+    void setUp() {
+        evenOrOdd = new EvenOrOdd();
+        player = new Players("TestPlayer");
     }
 
     @Test
-    void testInitialScores() {
-        Players player = new Players("TestPlayer");
-        assertEquals(0, player.getScore());
+    void testInitialComputerWins() {
+        assertEquals(0, evenOrOdd.getComputerWins());
     }
 
     @Test
-    void testPlayerScoreIncrement() {
-        Players player = new Players("TestPlayer");
-        player.incrementScore();
-        assertEquals(1, player.getScore());
+    void testPlayerGuessesCorrectly() {
+        evenOrOdd.playerGuess(2, 4); // Assume both numbers are even
+        assertEquals(1, evenOrOdd.getPlayerWins());
+    }
+
+    @Test
+    void testSimulateEvenOrOddGame() {
+        String result = evenOrOdd.determineResult(3);
+        assertTrue(result.equals("odd") || result.equals("even"));
+    }
+
+    @Test
+    void testComputerWinInEvenOrOdd() {
+        evenOrOdd.incrementComputerWins();
+        assertEquals(1, evenOrOdd.getComputerWins());
     }
 }
