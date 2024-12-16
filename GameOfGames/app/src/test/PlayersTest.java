@@ -1,25 +1,34 @@
-import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class PlayersTest {
+class PlayersTest {
+    private Players player;
+
+    @BeforeEach
+    void setUp() {
+        player = new Players("TestPlayer");
+    }
+
+    @Test
+    void testGetName() {
+        assertEquals("TestPlayer", player.getName());
+    }
 
     @Test
     void testInitialScore() {
-        Players player = new Players("TestPlayer");
         assertEquals(0, player.getScore());
     }
 
     @Test
     void testIncrementScore() {
-        Players player = new Players("TestPlayer");
         player.incrementScore();
         assertEquals(1, player.getScore());
     }
 
     @Test
     void testResetScore() {
-        Players player = new Players("TestPlayer");
-        player.incrementScore();  // Increment the score first
+        player.incrementScore();
         player.resetScore();
         assertEquals(0, player.getScore());
     }
