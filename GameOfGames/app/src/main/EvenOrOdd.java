@@ -1,12 +1,18 @@
 import java.util.Scanner;
 
 public class EvenOrOdd {
+    private int computerWins = 0;
+
+    public int getComputerWins() {
+        return computerWins;
+    }
+    
     public void startGame(Players player) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Even or Odd, " + player.getName() + "!");
 
         int rounds = getBestOutOf(scanner);
-        int playerWins = 0, computerWins = 0;
+        int playerWins = 0;
 
         System.out.print("Do you want to be 'even' or 'odd'? ");
         String playerChoice = scanner.next().toLowerCase();
