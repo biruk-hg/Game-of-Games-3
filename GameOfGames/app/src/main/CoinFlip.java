@@ -1,12 +1,18 @@
 import java.util.Scanner;
 
 public class CoinFlip {
+    private int computerWins = 0;
+
+    public int getComputerWins() {
+        return computerWins;
+    }
+    
     public void startGame(Players player) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Coin Flip, " + player.getName() + "!");
 
         int rounds = getBestOutOf(scanner);
-        int playerWins = 0, computerWins = 0;
+        int playerWins = 0;
         String[] outcomes = {"Heads", "Tails"};
 
         while (playerWins < rounds / 2 + 1 && computerWins < rounds / 2 + 1) {
