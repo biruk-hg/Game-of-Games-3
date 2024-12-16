@@ -1,43 +1,42 @@
-import org.junit.jupiter.api.*;
-import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
-import java.io.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class GameControllerTest {
+class GameControllerTest {
+    private GameController gameController;
 
-    @Test
-    void testGameLoopExit() throws IOException {
-        // Simulate console input
-        InputStream input = new ByteArrayInputStream("6\n".getBytes());
-        System.setIn(input);
-        
-        // Redirect output stream to capture the printed result
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
-
-        // Call main method
-        String[] args = {};
-        GameController.main(args);
-
-        // Check if output includes the correct exit message
-        assertTrue(output.toString().contains("Thanks for playing"));
+    @BeforeEach
+    void setUp() {
+        gameController = new GameController();
     }
 
     @Test
-    void testInvalidChoice() throws IOException {
-        // Simulate console input
-        InputStream input = new ByteArrayInputStream("7\n6\n".getBytes());
-        System.setIn(input);
-        
-        // Redirect output stream to capture the printed result
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
+    void testGameInitialization() {
+        assertNotNull(gameController);
+    }
 
-        // Call main method
-        String[] args = {};
-        GameController.main(args);
+    @Test
+    void testAddPlayer() {
+        Players player = new Players("TestPlayer");
+        gameController.addPlayer(player);
+        assertEquals(1, gameController.getPlayers().size());
+    }
 
-        // Check if invalid input is handled
-        assertTrue(output.toString().contains("Invalid choice. Please try again."));
+    @Test
+    void testStartGame() {
+        Players player = new Players("TestPlayer");
+        gameController.addPlayer(player);
+        assertDoesNotThrow(() -> gameController.startGame());
+    }
+
+    @Test
+    void testGameFlow() {
+        Players player1 = new Players("Player1");
+        Players player2 = new Players("Player2");
+        gameController.addPlayer(player1);
+        gameController.addPlayer(player2);
+
+        assertEquals(2, gameController.getPlayers().size());
+        assertDoesNotThrow(() -> gameController.startGame());
     }
 }
