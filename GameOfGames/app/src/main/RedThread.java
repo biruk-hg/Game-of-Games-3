@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class RedThread {
     private int computerScore = 0;
 
+    public int getComputerScore() {
+        return computerScore;
+    }
+
     public void startGame(Players player) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Find the Red Thread, " + player.getName() + "!");
