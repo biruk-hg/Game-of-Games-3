@@ -102,10 +102,10 @@ You can select any of these games from the **Game of Games** menu.
 
 ### **Clone the Repository**
 
+Make sure to complie all the classes (CoinFlip.java, FindTheThimble.java, etc.) before attempting to compile and run the GameController.java 
+
 ```bash
 git clone https://github.com/biruk-hg/Game-of-Games-3.git
 cd location_of_GameOfGames_folder/GameOfGames/app/src/main (for the main classes)
 cd location_of_GameOfGames_folder/GameOfGames/app/src/test (for the test classes)
-
-Make sure to complie all the classes (CoinFlip.java, FindTheThimble.java, etc.) before attempting to compile and run the GameController.java 
 
